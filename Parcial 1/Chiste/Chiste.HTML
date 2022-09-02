@@ -3,41 +3,53 @@
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Chiste Chuck</title>
 </head>
 <body>
     <label for="nombre">Nombre:</label>
-    <input id="nombre" type="text">
+    <input id="nombre" type="text"><br>
     
     <label for="apellido">Apellido:</label>
-    <input id="apellido" type="text">
+    <input id="apellido" type="text"><br>
 
-    <button>Pedir chiste</button>
-
-    <label for="chisteChuck">Chuck dice:</label>
-
-    document.getE
+    <textarea name="chiste" id="chiste" cols="30" rows="10"></textarea>
+    <button id="boton">Pedir chiste</button>
 
     <script>
-        async function getChiste(){
+        ///async function getChiste(){
 
-        let headersList = {
-        "Accept": "*/*",
-        "User-Agent": "Thunder Client (https://www.thunderclient.com)"
-        }
+        ///let headersList = {
+        ///"Accept": "*/*",
+        ///"User-Agent": "Thunder Client (https://www.thunderclient.com)"
+        ///}
 
-        let response = await fetch("http://api.icndb.com/jokes/random?firstName=Citlali&lastName=Nila", { 
-        method: "GET",
-        headers: headersList
+        ///let response = await fetch("http://api.icndb.com/jokes/random?firstName=Citlali&lastName=Nila", { 
+        ///method: "GET",
+        ///headers: headersList
+        ///});
+
+        document.getElementById("boton").addEventListener("click", async function() {
+            var nombre = document.getElementById('nombre').value;
+            var apellido=document.getElementById('apellido').value;
+
+            console.log(nombre);
+            console.log(apellido);
+            let chiste = await traerChiste();
+            console.log(chiste);
+
+            document.getElementById("chiste").value=chiste.value.joke
         });
 
-        let response = await fetch()
-
-        let data = await response.json();
-        return data;
-
+        async function traerChiste() {
+            ///let varNombre = document.getElementById("nombre").value;
+            ///let varApellido = document.getElementById("apellido").value;
+            let respuesta = await fetch('http://api.icndb.com/jokes/random?firstName=${nombre}&lastName=${apellido}')
+            //let varUrl = 'http://api.icndb.com/jokes/random?firstName=$(varNombre)&lastName=$(varApellido)';
+            let datojson = await respuesta.json();
+            return datojson;
         }
+        
+        ///}
 
     </script>
 </body>
