@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <label for="nombre">Nombre:</label>
+    <input id="nombre" type="text">
+    
+    <label for="apellido">Apellido:</label>
+    <input id="apellido" type="text">
+
+    <button>Pedir chiste</button>
+
+    <label for="chisteChuck">Chuck dice:</label>
+
+    document.getE
+
+    <script>
+        async function getChiste(){
+
+        let headersList = {
+        "Accept": "*/*",
+        "User-Agent": "Thunder Client (https://www.thunderclient.com)"
+        }
+
+        let response = await fetch("http://api.icndb.com/jokes/random?firstName=Citlali&lastName=Nila", { 
+        method: "GET",
+        headers: headersList
+        });
+
+        let response = await fetch()
+
+        let data = await response.json();
+        return data;
+
+        }
+
+    </script>
+</body>
+</html>
