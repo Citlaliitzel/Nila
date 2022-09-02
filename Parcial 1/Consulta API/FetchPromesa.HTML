@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Fetch Promesa</title>
+    <link rel="stylesheet" href="ConsultaAPI.CSS">
+</head>
+<body>
+    <button id="boton">Hacer Fetch</button>
+    <img id="imagen">
+
+    <script>
+    
+    document.getElementById('boton').addEventListener('click',function(){
+        hacerPeticion();
+    });
+
+    function hacerPeticion() {
+    ///fetch("https://api.waifu.pics/sfw/waifu")
+    fetch("https://api.catboys.com/img")
+        .then(respuesta => respuesta.json())
+        .then(datos => document.getElementById('imagen').src=datos.url)
+    }
+    </script>
+</body>
+</html>
