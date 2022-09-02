@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Fetch Async Await</title>
+    <link rel="stylesheet" href="FetchAsyncAwait.CSS">
 </head>
 <body>
     <button id="boton">Hacer Fetch</button>
@@ -12,11 +12,13 @@
 
     <script>
         document.getElementById('boton').addEventListener('click',function async(){
-            hacerPeticion();
+            let dato = await hacerPeticion();
+            console.log(dato);
+            document.getElementById('imagen').src=dato.url
         });
 
     async function hacerPeticion() {
-        let respuesta = await fetch("https://api.waifu.pics/sfw/waifu");
+        let respuesta = await fetch("https://api.catboys.com/img");
         let datojson = await respuesta.json();
         return datojson;
     }
