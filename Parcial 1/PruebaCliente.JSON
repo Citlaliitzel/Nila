@@ -1,0 +1,7 @@
+{
+    "Cliente":{
+
+        "10":{"Nombre": "Citlali" ,"Apellido":"Nila"},
+        "20":{"Nombre": "Eduardo" ,"Apellido":"Medina"}
+    }
+}
