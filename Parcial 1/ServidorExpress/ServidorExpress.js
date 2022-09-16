@@ -1,10 +1,10 @@
 var express = require('express')
-var cors = require('cors')
+//var cors = require('cors')
 
 var app = express()
 
 //app.use(cors({origin: "http://localhost"}))
-app.use(cors({ origin:"*"}))
+//app.use(cors({ origin:"*"}))
 
 app.get('/', (req, res) => {
     res.send('Servidor Express constestando desde Get: PORT8082')
