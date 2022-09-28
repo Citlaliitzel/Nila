@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Maquina de Turing</title>
+    <link rel="stylesheet" href="./styles.css">
+    <script src="./index.js"></script>
+</head>
+<body>
+    <div class="ContainerHeader">
+        <div class="ContentInputs">
+            <div class="ContainerAlfabeto">
+                <label for="inputLb">Alfabeto</label>
+                <input type="text" class="inputAlfabeto" id="inputAlfabeto">
+            </div>
+            <div class="ContainerAlfabeto">
+                <label for="inputLb">Ingresar Dato</label>
+                <input type="text" class="inputAlfabeto" id="inputEnterData">
+            </div>
+            <div class="ContainerAlfabeto">
+                <label for="inputLb">Ingresar Expresion de Bisqueda</label>
+                <input type="text" class="inputAlfabeto" id="inputTuringData">
+            </div>
+        </div>
+        <div class="ContainerButtonsModes">
+            <button class="btnRandom" id="btnLotChars">Insertar Muchos Caracteres</button>
+            <button class="btnRandom" id="btnRandomChar">Insertar Caracter Random</button>
+            <button class="btnRandom" id="btnTuringMachine">Iniciar Maquina de Turing</button>
+        </div>
+    </div>
+    <div class="ContainerGrid">
+        <h1>Cinta de caracteres</h1>
+        <div class="cintaContainer" id="cintaContainer">
+            <input type="text" class="gridInput" id="slotInicial">
+            <input type="text" class="gridInput" id="slotFinal">
+        </div>
+    </div>
+</body>
+</html>
