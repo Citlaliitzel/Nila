@@ -29,9 +29,16 @@
             let cadSinEsp=quitarEspacios(cad);
             console.log(cadSinEsp);
         })
+
+        document.getElementById("btn3").addEventListener("click",function(){
+            let cad=document.getElementById("cadena").value;
+            let cadLong=obtenerLongitud(cad);
+            console.log(cadLong);
+        })
+
     </script> --->
 
-    <script type="module">
+        <script type="module">
         import * as funciones from './moduloesm'
 
         document.getElementById("btn1").addEventListener("click",function(){
@@ -55,7 +62,7 @@
             document.getElementById("resultado").value=cadLong;
         })
 
-    </script>
+    </script> 
     
 </body>
 </html>

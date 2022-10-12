@@ -3,7 +3,7 @@ export function pasarMayusculas(cadena) {
 }
 
 export function quitarEspacios(cadena) {
-    return cadena.replace(/ /g,"");
+    return cadena.replace(/ /,"");
 }
 
 export function obtenerLongitud(cadena) {

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ModuloESM</title>
+</head>
+<body>
+    
+   <label for="cadena"></label>
+    <input id="cadena" type="text">
+    <button id="btn1">Mayusculas</button>
+    <button id="btn2">Sin Espacios</button>
+    <button id="btn3">Obtener Longitud</button>
+    <input id="resultado" type="text">
+
+    <script type="module">
+
+        document.getElementById("btn1").addEventListener("click",function(){
+
+            import('./moduloesm')
+            .then(function(modulo){
+                let cadMay=modulo.pasarMayusculas(document.getElementById("cadena").value);
+                document.getElementById("resultado").value=cadMay;
+            })
+
+        })
+
+        document.getElementById("btn2").addEventListener("click",function(){
+
+            import('./moduloesm')
+            .then(function(modulo){
+                let cadSinEsp=modulo.quitarEspacios(document.getElementById("cadena").value);
+                document.getElementById("resultado").value=cadSinEsp;
+            })
+
+        })
+
+        document.getElementById("btn3").addEventListener("click",function(){
+
+            import('./moduloesm')
+            .then(function(modulo){
+                let cadLong=modulo.obtenerLongitud(document.getElementById("cadena").value);
+                document.getElementById("resultado").value=cadLong;
+            })
+
+        })
+
+    </script> 
+    
+</body>
+</html>
