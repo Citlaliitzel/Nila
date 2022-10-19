@@ -1,11 +1,15 @@
 {
   "name": "modulobalin",
   "version": "1.0.0",
-  "main": "index.js",
+  "description": "",
+  "main": "modulobalin.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
+  "repository": {
+    "type": "git",
+    "url": "Nila"
+  },
   "author": "Citlali Nila",
-  "license": "ISC",
-  "description": ""
+  "license": "ISC"
 }
