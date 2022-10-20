@@ -9,18 +9,18 @@ const { Console } = require('console');
 var con = mysql.createConnection({
     host    : 'localhost',
     user    : 'root',
-    password: 'Nila226',
+    password: 'password',
     database: 'prueba'
 });
 
 app.get('/Consulta/id/:ID',(req,res) => {
     console.log(req.params)
     console.log(req.query.ID);
-        con.query(`SELECT * FROM persona where idID = ${req.params.ID}`, function (error,results,fields) {
+        con.query(`SELECT * FROM persona where id = ${req.params.ID}`, function (error,results,fields) {
             if (error) throw error;
             console.log(results);
             res.send(results);
-        })
+        });
 })
 
     //EJEMPLO CLASE
@@ -33,6 +33,7 @@ app.get('/Consulta/id/:ID',(req,res) => {
         //const [responseDB] = await pool.query(`SELECT * FROM roster WHERE id=${DataID}`);
         //res.json(responseDB);
     //});
-    //app.listen(3006, () => {
-        //console.log('Servidor Express escuchando en el puerto 3006');
-    //});
+
+    app.listen(8082, () => {
+        console.log('Servidor Express escuchando en el puerto 8082');
+    });
