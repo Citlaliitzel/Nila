@@ -14,25 +14,12 @@ var con = mysql.createConnection({
 });
 
     //CREATE = POST
-    app.post('/Crear/id/:ID',(req,res) => {
-        console.log(req.params)
-        console.log(req.query.ID);
-            con.query(`INSERT INTO empleado (id, nombre) VALUES ( ID : ${id_empleado} Nombre : ${nombre})`, function (error,results,fields) {
+    app.post('/Crear',(req,res) => {
+            con.query(`INSERT INTO persona(id, nombre) VALUES (${req.body.id}, '${req.body.nombre}')`, function (error,results,fields) {
                 if (error) throw error;
                 console.log(results);
                 res.send(results);
             });
-    })
-
-    app.post('/insertar', async (req, res) => {
-   
-        const id_empleado=req.body.id_empleado;
-        const nombre=req.body.nombre;
-        const apellido=req.body.apellido;
-        const email=req.body.email
-        console.log(id_empleado,nombre,apellido,email);
-        await pool.execute(`INSERT INTO empleado VALUES (?,?,?,?)`,[id_empleado,nombre,apellido,email])
-        res.json({'Resultado':`Empleado insertado ID : ${id_empleado} Nombre : ${nombre} Apellido: ${apellido} Email : ${email}`})
     })
 
     //READ = GET
@@ -46,26 +33,23 @@ var con = mysql.createConnection({
             });
     })
 
-    //UPDATE =  PUT/PATCH
-    app.get('/Actualizar/id/:ID',(req,res) => {
-        console.log(req.params)
-        console.log(req.query.ID);
-            con.query(`UPDATE persona SET id=?, nombre=?`, function (error,results,fields) {
+    app.get('/Leer',(req,res) => {
+            con.query(`SELECT * FROM persona`, function (error,results,fields) {
                 if (error) throw error;
                 console.log(results);
                 res.send(results);
             });
     })
 
-    app.put('/actualizar/:id_empleado', async (req, res) => {
-        const id=req.params.id_empleado;
-        const id_empleado = req.body.id_empleado;
-        const nombre = req.body.nombre;
-        const apellido = req.body.apellido;
-        const email = req.body.email;
-        await pool.execute(`UPDATE empleado SET id_empleado=?,nombre=?,apellido=?,email=? WHERE empleado.id_empleado=?`,[id_empleado,nombre,apellido,email,id])
-        res.json({ 'Se Actualizo el Empleado ': nombre })
+    //UPDATE =  PUT/PATCH
+    app.put('/Actualizar',(req,res) => {
+            con.query(`UPDATE persona set nombre='${req.body.nombre}' WHERE id=${req.body.id}`, function (error,results,fields) {
+                if (error) throw error;
+                console.log(results);
+                res.send(results);
+            });
     })
+
 
     //DELETE = DELETE
     app.delete('/Eliminar/id/:ID', async (req, res) => {
