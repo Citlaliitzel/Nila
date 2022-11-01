@@ -12,8 +12,8 @@
   new gridjs.Grid({
     columns: ['ID', 'Nombre'],
     server: {
-      url: 'https://localhost:8082/Leer/',
-      then: data => data.results.map(Leer => 
+      url: 'http://localhost:8082/Leer',
+      then: data => data.map(Leer => 
         [Leer.id, Leer.nombre]
       )
     } 
