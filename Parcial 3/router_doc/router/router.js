@@ -17,7 +17,18 @@ var con = mysql.createConnection({
 });
 
     //CREATE = POST
-    router.post('/Crear',(req,res) => {
+    
+    /**
+     * @swagger
+     * /Persona:
+     *  post:
+     *  description: Ingresa nueva informcion sobre una persona.
+     *  responses:
+     *  200:
+     *  description: Esta permite dar de alta a una persona: id y nombre.
+    */
+    router.post('/', async (req,res) => {
+        con.log(req.body)
             con.query(`INSERT INTO persona(id, nombre) VALUES (${req.body.id}, '${req.body.nombre}')`, function (error,results,fields) {
                 if (error) throw error;
                 console.log(results);
@@ -26,17 +37,36 @@ var con = mysql.createConnection({
     })
 
     //READ = GET
-    router.get('/Leer/id/:ID',(req,res) => {
+
+    /**
+     * @swagger
+     * /Persona/:ID:
+     *  get:
+     *  description: Informacion sobre una persona en especifico.
+     *  responses:
+     *  200:
+     *  description: Esta delvuelve todos las personas de una persona consultada por numero de ID.
+    */
+    router.get('/:ID', async (req,res) => {
         console.log(req.params)
-        console.log(req.query.ID);
-            con.query(`SELECT * FROM persona WHERE id = ${req.params.ID}`, function (error,results,fields) {
+            con.query(`SELECT * FROM persona WHERE idID = ${req.params.ID}`, function (error,results,fields) {
                 if (error) throw error;
                 console.log(results);
                 res.send(results);
             });
     })
 
-    router.get('/Leer',(req,res) => {
+    /**
+     * @swagger
+     * /Persona:
+     *  get:
+     *  description: Informacion sobre una persona.
+     *  responses:
+     *  200:
+     *  description: Esta delvuelve todos las personas.
+    */
+    router.get('/', async (req,res) => {
+        console.log(req.params)
             con.query(`SELECT * FROM persona`, function (error,results,fields) {
                 if (error) throw error;
                 console.log(results);
@@ -45,7 +75,18 @@ var con = mysql.createConnection({
     })
 
     //UPDATE =  PUT/PATCH
-    router.put('/Actualizar',(req,res) => {
+
+    /**
+     * @swagger
+     * /Persona:
+     *  put:
+     *  description: Modifica la informacion sobre una persona en especifico.
+     *  responses:
+     *  200:
+     *  description: Esto permite modificar la informacion todos las personas.
+    */
+    router.put('/:ID', async (req,res) => {
+        console.log(req.body)
             con.query(`UPDATE persona set nombre='${req.body.nombre}' WHERE id=${req.body.id}`, function (error,results,fields) {
                 if (error) throw error;
                 console.log(results);
@@ -55,10 +96,19 @@ var con = mysql.createConnection({
 
 
     //DELETE = DELETE
-    router.delete('/Eliminar/id/:ID', async (req, res) => {
+
+    /**
+     * @swagger
+     * /Persona:
+     *  delete:
+     *  description: Elimina la informacion sobre una persona en especifico.
+     *  responses:
+     *  200:
+     *  description: Esto permite eliminar permanentemente la informacion todos las personas.
+    */
+    router.delete('/id', async (req, res) => {
         console.log(req.params)
-        console.log(req.query.ID);
-        con.query(`DELETE FROM persona WHERE id = ${req.params.ID}`, function (error,results,fields) {
+        con.query(`DELETE FROM persona WHERE idID = ${req.params.ID}`, function (error,results,fields) {
             if (error) throw error;
             console.log(results);
             res.send(results);
